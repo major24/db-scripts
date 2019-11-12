@@ -1,0 +1,28 @@
+
+/** Expense Report - Build Sept 2019 **/
+
+/** ----- DROP TABLE ----- **/
+USE [mn24]
+GO
+SET ANSI_NULLS ON
+GO
+SET ANSI_PADDING ON
+GO
+
+DROP TABLE [dbo].[expense_items]
+GO
+DROP TABLE [dbo].[expenses]
+GO
+DROP TABLE [dbo].[transactions]
+GO
+DROP TABLE [dbo].[user_credentials]
+GO
+DROP TABLE [dbo].[users]
+GO
+DROP TABLE [dbo].[category_lookup]
+GO
+DROP TABLE [dbo].[cost_centre_user_approval]
+GO
+DROP TABLE [dbo].[cost_centre]
+GO
+/** ------------------------------------------------ **/

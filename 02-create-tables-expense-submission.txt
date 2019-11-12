@@ -1,0 +1,118 @@
+
+/** Expense Report - Build Sept 2019 **/
+
+/** ----- DROP TABLE ----- **/
+USE [mn24]
+GO
+SET ANSI_NULLS ON
+GO
+SET ANSI_PADDING ON
+GO
+
+/** ----- CREATE TABLE ----- **/
+USE [mn24]
+GO
+SET ANSI_NULLS ON
+GO
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[users](
+	[user_id] [varchar] (10) NOT NULL,
+	[first_name] [varchar](30) NOT NULL,
+	[last_name] [varchar](30) NOT NULL,
+	[active] [varchar] (3) NULL,
+	[manager_id] [varchar] (10) NULL,
+	[cost_centre] [varchar] (10) NULL,
+	[updated_date] [date] NULL,
+	CONSTRAINT [pk_users] PRIMARY KEY CLUSTERED
+		([user_id])
+)
+GO
+
+CREATE TABLE [dbo].[user_credentials](
+	[user_id] [varchar] (10) NOT NULL,
+	[password] [varchar] (10) NULL,
+	CONSTRAINT [pk_user_credentials] PRIMARY KEY CLUSTERED
+		([user_id]),
+	CONSTRAINT [fk_user_user_credentials] FOREIGN KEY ([user_id])
+		REFERENCES [dbo].[users] ([user_id])
+)
+GO
+
+
+
+CREATE TABLE [dbo].[transactions](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[user_id] [varchar] (10) NOT NULL,
+	[trans_type] [varchar](10) NOT NULL,
+	[description] [varchar](60) NOT NULL,
+	[amount] [decimal](10,2) NOT NULL,
+	[tax] [decimal](10,2) NULL,
+	[trans_date] [date] NULL,
+	[category] [varchar](10) NULL,
+	[status] [varchar] (10) NULL,
+	[updated_date] [date] NULL,
+	CONSTRAINT [pk_transactions] PRIMARY KEY CLUSTERED
+		([id]),
+	CONSTRAINT [fk_user_transactions] FOREIGN KEY ([user_id])
+		REFERENCES [dbo].[users] ([user_id])
+)
+GO
+
+
+-- Expenses
+CREATE TABLE [dbo].[expenses](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[user_id] [varchar] (10) NOT NULL,
+	[cost_centre] [varchar] (10) NULL,
+	[approver_id] [varchar] (10) NULL,
+	[status] [varchar] (10) NULL,
+	[submitted_date] [date] NULL,
+	[updated_date] [date] NULL,
+	CONSTRAINT [pk_expenses] PRIMARY KEY CLUSTERED
+		([id]),
+	CONSTRAINT [fk_user_expenses] FOREIGN KEY ([user_id])
+		REFERENCES [dbo].[users] ([user_id])
+)
+GO
+
+CREATE TABLE [dbo].[expense_items](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[expense_id] [int] NOT NULL,
+	[trans_id] [int] NOT NULL,
+	CONSTRAINT [pk_exp_items] PRIMARY KEY CLUSTERED
+		([id]),
+	CONSTRAINT [fk_exp_exp_items] FOREIGN KEY ([expense_id])
+		REFERENCES [dbo].[expenses] ([id])
+)
+GO
+
+-- Category lookup
+CREATE TABLE [dbo].[category_lookup](
+	[category] [varchar](10) NOT NULL,
+	[description] [varchar] (100) NOT NULL,
+	CONSTRAINT [pk_category_lookup] PRIMARY KEY CLUSTERED
+		([category])
+)
+GO
+
+
+-- Costcentre
+CREATE TABLE [dbo].[cost_centre](
+	[id] [varchar](10) NOT NULL,
+	[description] [varchar] (100) NOT NULL,
+	CONSTRAINT [pk_cost_centre] PRIMARY KEY CLUSTERED
+		([id])
+)
+GO
+
+CREATE TABLE [dbo].[cost_centre_user_approval](
+	[id] [varchar](10) NOT NULL,
+	[user_id] [varchar] (10) NOT NULL,
+	[limit] [decimal](10,2) NOT NULL,
+	CONSTRAINT [uc_cc_user_id] UNIQUE CLUSTERED
+		([id], [user_id])
+)
+GO
+

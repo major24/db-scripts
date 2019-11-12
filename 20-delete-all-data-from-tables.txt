@@ -1,0 +1,24 @@
+/** mn24 **/
+
+USE [mn24]
+GO
+SET ANSI_NULLS ON
+GO
+SET ANSI_PADDING ON
+GO
+
+-- DELETE ALL DATA IN ALL TABLES --
+
+DELETE FROM [dbo].[expense_items]
+GO
+DELETE FROM [dbo].[expenses]
+GO
+DELETE FROM [dbo].[transactions]
+GO
+
+DELETE FROM [dbo].[user_credentials]
+GO
+DELETE FROM [dbo].[users]
+GO
+DELETE FROM [dbo].[category_lookup]
+GO

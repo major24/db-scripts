@@ -1,0 +1,250 @@
+
+/** mn24 **/
+
+USE [mn24]
+GO
+SET ANSI_NULLS ON
+GO
+SET ANSI_PADDING ON
+GO
+
+-- it staff
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user1', 'Major', 'Nalliah', 'A', 'user4', 'IT1000', GETDATE())
+GO
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user2', 'Kumar', 'Sethu', 'A', 'user4', 'IT1000', GETDATE())
+GO
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user3', 'Rohan', 'Senegal', 'A', 'user5', 'IT1000', GETDATE())
+GO
+
+-- it managers
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user4', 'Reynold', 'Kamaron', 'A', 'user6', 'IT1000', GETDATE())
+GO
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user5', 'Steve', 'Richard', 'A', 'user6', 'IT1000', GETDATE())
+GO
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user6', 'Don', 'Clancy', 'A', 'user10', 'IT1000', GETDATE())
+GO
+
+-- marketing staff
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user7', 'Mary', 'Hamilton', 'A', 'user8', 'MK2000', GETDATE())
+GO
+-- marketing managers
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user8', 'Ashley', 'Mehan', 'A', 'user9', 'MK2000', GETDATE())
+GO
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user9', 'Joe', 'Sherep', 'A', 'user10', 'MK2000', GETDATE())
+GO
+-- top mgr
+INSERT INTO [dbo].[users] ([user_id], [first_name], [last_name], [active], [manager_id], [cost_centre], [updated_date])
+	VALUES ('user10', 'Jennifer', 'Jackson', 'A', 'user99', 'MK2000', GETDATE())
+GO
+/** -------------------------- **/
+
+
+
+
+INSERT INTO [dbo].[user_credentials] ([user_id], [password])
+	VALUES ('user1', 'user1')
+GO
+INSERT INTO [dbo].[user_credentials] ([user_id], [password])
+	VALUES ('user2', 'user2')
+GO
+INSERT INTO [dbo].[user_credentials] ([user_id], [password])
+	VALUES ('user3', 'user3')
+GO
+INSERT INTO [dbo].[user_credentials] ([user_id], [password])
+	VALUES ('user4', 'user4')
+GO
+INSERT INTO [dbo].[user_credentials] ([user_id], [password])
+	VALUES ('user5', 'user5')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user1', 'DR', 'Sheraton Hotel', 1450.99, 325.78, GETDATE(), 'TRVL', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user1', 'DR', 'Taxi Beck', 80.50, 18.70, GETDATE(), 'TRVL', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user1', 'DR', 'Food and Beverages', 120.20, 25.10, GETDATE(), 'FOOD', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user1', 'DR', 'HP Q1 File Folders', 190.50, 21.10, GETDATE(), 'SUPL', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user1', 'DR', 'Westin Habour Castle', 890.90, 225.10, GETDATE(), 'ACCM', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user1', 'DR', 'Banquest Hall Promo', 120.20, 25.10, GETDATE(), 'PROM', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user2', 'DR', 'Air Transact', 2350.00, 400.00, GETDATE(), 'TRVL', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user2', 'DR', 'Jet Airways', 6350.00, 900.00, GETDATE(), 'TRVL', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user2', 'DR', 'Holiday INN NY', 1650.00, 750.00, GETDATE(), 'ACCM', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user2', 'DR', 'Kelys Restaurant', 250.00, 57.66, GETDATE(), 'FOOD', 'New')
+GO
+
+INSERT INTO [dbo].[transactions]
+	([user_id],
+	[trans_type],
+	[description],
+	[amount],
+	[tax],
+	[trans_date],
+	[category],
+	[status])
+VALUES ('user3', 'DR', 'Other', 1650.00, 750.00, GETDATE(), 'OTHR', 'New')
+GO
+
+-- category lookup
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('TRVL', 'Travel')
+GO
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('FOOD', 'Food and Bev')
+GO
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('SUPL', 'Office Supplies')
+GO
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('TAXI', 'Taxi and Transportation')
+GO
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('ACCM', 'Hotel Accomodation')
+GO
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('ENT1', 'Entertainment')
+GO
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('PROM', 'Business Promotions')
+GO
+INSERT INTO [dbo].[category_lookup] ([category], [description]) VALUES ('OTHR', 'Other')
+GO
+
+
+-- Costcentre data
+
+
+INSERT INTO [dbo].[cost_centre] ([id], [description]) VALUES ('IT1000', 'Information Technology')
+GO
+INSERT INTO [dbo].[cost_centre] ([id], [description]) VALUES ('MK2000', 'Marketing and Promotions')
+GO
+
+INSERT INTO [dbo].[cost_centre_user_approval] ([id], [user_id], [limit]) VALUES ('IT1000', 'user4', 1000.00)
+GO
+INSERT INTO [dbo].[cost_centre_user_approval] ([id], [user_id], [limit]) VALUES ('IT1000', 'user5', 5000.00)
+GO
+INSERT INTO [dbo].[cost_centre_user_approval] ([id], [user_id], [limit]) VALUES ('IT1000', 'user6', 8000.00)
+GO
+INSERT INTO [dbo].[cost_centre_user_approval] ([id], [user_id], [limit]) VALUES ('MK2000', 'user8', 1000.00)
+GO
+INSERT INTO [dbo].[cost_centre_user_approval] ([id], [user_id], [limit]) VALUES ('MK2000', 'user9', 5000.00)
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+

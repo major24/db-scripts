@@ -1,0 +1,44 @@
+/** mn24 **/
+
+
+CREATE TABLE [dbo].[addresses](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[user_id] [varchar] (10) NOT NULL,
+	[addr_type] [varchar] (10) NOT NULL,
+	[street] [varchar] (50) NULL,
+	[city] [varchar] (30) NULL,
+	[state] [varchar] (30) NULL,
+	[post_code] [varchar] (20) NULL,
+	CONSTRAINT [pk_addresses] PRIMARY KEY CLUSTERED
+		([id]),
+	CONSTRAINT [fk_user_user_addresses] FOREIGN KEY ([user_id])
+		REFERENCES [dbo].[users] ([user_id])
+)
+GO
+
+USE [mn24]
+GO
+SET ANSI_NULLS ON
+GO
+SET ANSI_PADDING ON
+GO
+
+INSERT INTO [dbo].[addresses] ([user_id], [addr_type], [street], [city], [state], [post_code])
+	VALUES ('user1', 'home', '37 Antelope Drive', 'Scarborough', 'ON', 'M1B 6K5')
+GO
+INSERT INTO [dbo].[addresses] ([user_id], [addr_type], [street], [city], [state], [post_code])
+	VALUES ('user1', 'business', '100 Markam Road', 'Scarborough', 'ON', 'M4U 7K8')
+GO
+
+INSERT INTO [dbo].[addresses] ([user_id], [addr_type], [street], [city], [state], [post_code])
+	VALUES ('user2', 'home', '200 Warden Avenue', 'Scarborough', 'ON', 'MT5 6U5')
+GO
+INSERT INTO [dbo].[addresses] ([user_id], [addr_type], [street], [city], [state], [post_code])
+	VALUES ('user2', 'business', '200 King Street', 'Toronto', 'ON', 'M4R 9H5')
+GO
+
+INSERT INTO [dbo].[addresses] ([user_id], [addr_type], [street], [city], [state], [post_code])
+	VALUES ('user3', 'home', '3984 Dixon Road', 'Missisauga', 'ON', 'L8U 6Y5')
+GO
+
+
